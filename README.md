@@ -1,1 +1,1 @@
-# Calculator
+This is my final project for the Foundations unit of TOP. It is intended to demonstrate my entire range of skills so far in HTML, CSS, and JavaScript.
