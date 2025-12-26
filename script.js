@@ -66,15 +66,9 @@ function clickOperator(buttonClicked) {
 }
 
 function displayResult(num1,num2,operator) {
-    //if consecutive operator buttons are clicked
-        //operator = last one clicked
     const display = document.getElementById("display");
-    //if clickOperator() runs again instead of = being clicked
-        //operator = clickOperator()
-        //num1 = num2
-        //num2 = displayDigit()
-        //result = operate(operator,num1,num2)
-        //display.textContent = result;
+    //if operators are clicked consecutively
+        operator = clickOperator();
     //const equal = document.getElementById("=")
     btn.addEventListener("click",(num1,num2,operator) => {
         if (num1 == 0 || operator == 0 || num2 || 0) {
@@ -102,6 +96,10 @@ function displayResult(num1,num2,operator) {
             || btn.getElementId() == "×"
             || btn.getElementId() == "÷") {
                 operator = btn.clickOperator();
+                num1 = num2
+                num2 = displayDigit()
+                result = operate(operator,num1,num2)
+                display.textContent = result;
         }else{*/
             return result;
         //};
