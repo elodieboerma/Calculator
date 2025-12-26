@@ -50,7 +50,7 @@ button {
     align-items: center;
 }
 
-.bottomBtn {
+#clear {
     height: 50px;
     width: 250px;
     margin: auto;
