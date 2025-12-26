@@ -34,12 +34,33 @@ function operate(operator,num1,num2) {
     };
 }
 
+btn.addEventListener("click",() => {
+    const value = clickButton();
+    //num1 = displayDigit();
+    //operator = clickOperator();
+    //if consecutive operator buttons are clicked
+        //operator = last one clicked
+    //num2 = displayDigit();
+    let result;
+    displayResult();
+});
+
+const btn = document.querySelector("button");
+function clickButton() {
+    if (btn.class == "digit") {
+        return displayDigit(btn);
+    };
+    if (btn.class == "oprtr") {
+        return clickOperator(btn);
+    };
+};
+
 function displayDigit(buttonClicked) {
     //const digitBtn = document.getElementsByClassName("digitBtn");
     //const zero = document.getElementById("0");
     const number = buttonClicked.textContent
     display.textContent = number;
-    return digit;
+    return number;
 }
 
 function clickOperator(buttonClicked) {
@@ -48,25 +69,10 @@ function clickOperator(buttonClicked) {
     return oprtr;
 }
 
-const btn = document.querySelector("button");
-function clickButton() {
-    btn.addEventListener("click",() => {
-        if (btn.class == "digit") {
-            displayDigit(btn);
-        };
-        if (btn.class == "oprtr") {
-            clickOperator(btn);
-        };
-    });
-}
-
-function displayResult() {
-    num1 = displayDigit();
-    operator = clickOperator();
+function displayResult(num1,num2,operator) {
     //if consecutive operator buttons are clicked
         //operator = last one clicked
     num2 = displayDigit();
-    let result;
     const display = document.getElementById("display");
     //if clickOperator() runs again instead of = being clicked
         //operator = clickOperator()
@@ -77,7 +83,7 @@ function displayResult() {
     const equal = document.getElementById("=")
     equal.addEventListener("click",(num1,num2,operator) => {
         if (num1 == 0 || operator == 0 || num2 || 0) {
-            prompt("Not all components have been entered. Click \"clear\" to continue.");
+            alert("Not all components have been entered. Click \"clear\" to restart.");
             return;
         };
         let almostResult = operate(operator,num1,num2);
