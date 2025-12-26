@@ -48,11 +48,13 @@ function displayDigit() {
 }
 
 function clickOperator() {
-    //if an operator button is clicked
     const oprtrBtn = document.getElementsByClassName("oprtrBtn");
     const oprtr = oprtrBtn.textContent;
-        //return operator
-        return oprtr;
+    //if an operator button is clicked
+    oprtrBtn.addEventListener("click",() => {
+       //return operator
+        return oprtr; 
+    });
 }
 
 function displayResult() {
