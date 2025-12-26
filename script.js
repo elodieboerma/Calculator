@@ -65,9 +65,14 @@ function displayResult() {
             //break out of this somehow or wait or sth not sure what yet
             alert("Not all components have been entered.");
         };
-        result = operate(operator,num1,num2);
-        //if result has more than __ places
-            //round to __ places
+        let almostResult = operate(operator,num1,num2);
+        result = almostResult;
+        let resultPlaces = almostResult
+            .toString()
+            .length();
+        if (resultPlaces > 12) {
+            result = result.toPrecision(12);
+        };
         display.textContent = result;
     });
     return result;
