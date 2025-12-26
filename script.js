@@ -35,9 +35,16 @@ function operate(operator,num1,num2) {
 }
 
 function displayDigit() {
+    const digitBtn = document.getElementsByClassName("digitBtn");
+    //const zero = document.getElementById("0");
+    const digit = digitBtn.textContent;
     //if a digit button is clicked
+    digitBtn.addEventListener("click",digit => {
         //display digit on the display
+        display.textContent = digit;
         //return digit
+        return digit;
+    });
 }
 
 function clickOperator() {
