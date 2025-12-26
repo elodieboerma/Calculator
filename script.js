@@ -34,26 +34,29 @@ function operate(operator,num1,num2) {
     };
 }
 
-function displayDigit() {
-    const digitBtn = document.getElementsByClassName("digitBtn");
+function displayDigit(buttonClicked) {
+    //const digitBtn = document.getElementsByClassName("digitBtn");
     //const zero = document.getElementById("0");
-    const digit = digitBtn.textContent;
-    //if a digit button is clicked
-    digitBtn.addEventListener("click",digit => {
-        //display digit on the display
-        display.textContent = digit;
-        //return digit
-        return digit;
-    });
+    const number = buttonClicked.textContent
+    display.textContent = number;
+    return digit;
 }
 
-function clickOperator() {
-    const oprtrBtn = document.getElementsByClassName("oprtrBtn");
-    const oprtr = oprtrBtn.textContent;
-    //if an operator button is clicked
-    oprtrBtn.addEventListener("click",() => {
-       //return operator
-        return oprtr; 
+function clickOperator(buttonClicked) {
+    //const oprtrBtn = document.getElementsByClassName("oprtrBtn");
+    const oprtr = buttonClicked.textContent;
+    return oprtr;
+}
+
+const btn = document.querySelector("button");
+function clickButton() {
+    btn.addEventListener("click",() => {
+        if (btn.class == "digit") {
+            displayDigit(btn);
+        };
+        if (btn.class == "oprtr") {
+            clickOperator(btn);
+        };
     });
 }
 
