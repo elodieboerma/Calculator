@@ -36,13 +36,9 @@ function operate(operator,num1,num2) {
 
 btn.addEventListener("click",() => {
     const value = clickButton();
-    //num1 = displayDigit();
-    //operator = clickOperator();
-    //if consecutive operator buttons are clicked
-        //operator = last one clicked
-    //num2 = displayDigit();
+    //num1,num2,operator assignments
     let result;
-    displayResult();
+    displayResult(num1,num2,operator);
 });
 
 const btn = document.querySelector("button");
@@ -72,7 +68,6 @@ function clickOperator(buttonClicked) {
 function displayResult(num1,num2,operator) {
     //if consecutive operator buttons are clicked
         //operator = last one clicked
-    num2 = displayDigit();
     const display = document.getElementById("display");
     //if clickOperator() runs again instead of = being clicked
         //operator = clickOperator()
@@ -80,23 +75,37 @@ function displayResult(num1,num2,operator) {
         //num2 = displayDigit()
         //result = operate(operator,num1,num2)
         //display.textContent = result;
-    const equal = document.getElementById("=")
-    equal.addEventListener("click",(num1,num2,operator) => {
+    //const equal = document.getElementById("=")
+    btn.addEventListener("click",(num1,num2,operator) => {
         if (num1 == 0 || operator == 0 || num2 || 0) {
             alert("Not all components have been entered. Click \"clear\" to restart.");
             return;
         };
-        let almostResult = operate(operator,num1,num2);
-        result = almostResult;
-        let resultPlaces = almostResult
-            .toString()
-            .length();
-        if (resultPlaces > 12) {
-            result = result.toPrecision(12);
+        if (btn.getElementId() == "="
+            || btn.getElementId() == "+"
+            || btn.getElementId() == "-"
+            || btn.getElementId() == "×"
+            || btn.getElementId() == "÷") {
+                let almostResult = operate(operator,num1,num2);
+                result = almostResult;
+                let resultPlaces = almostResult
+                    .toString()
+                    .length();
+                if (resultPlaces > 12) {
+                    result = result.toPrecision(12);
+                };
+                display.textContent = result;
+                operator = btn.clickOperator();
         };
-        display.textContent = result;
+        /*if (btn.getElementId() == "+"
+            || btn.getElementId() == "-"
+            || btn.getElementId() == "×"
+            || btn.getElementId() == "÷") {
+                operator = btn.clickOperator();
+        }else{*/
+            return result;
+        //};
     });
-    return result;
 }
 
 function clear() {
