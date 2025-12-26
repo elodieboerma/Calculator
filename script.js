@@ -11,9 +11,9 @@ function multiply(a,b) {
 }
 
 function divide(a,b) {
-    if (b === 0) {
-        alert(`You can't divide ${a} cookies by your zero number of friends.`);
-        //somehow break out of this function or require the clear button to reset or auto. do it?
+    while (b === 0) {
+        b = prompt(`You can't divide ${a} cookies by your zero friends. Enter a different 
+            number.`);
     };
     return a / b;
 }
@@ -84,6 +84,6 @@ function clear() {
         num1 = null;
         num2 = null;
         operator = null;
-        //result = null;
+        result = null;
     });
 }
