@@ -77,8 +77,8 @@ function displayResult() {
     const equal = document.getElementById("=")
     equal.addEventListener("click",(num1,num2,operator) => {
         if (num1 == 0 || operator == 0 || num2 || 0) {
-            //break out of this somehow or wait or sth not sure what yet
-            alert("Not all components have been entered.");
+            prompt("Not all components have been entered. Click \"clear\" to continue.");
+            return;
         };
         let almostResult = operate(operator,num1,num2);
         result = almostResult;
