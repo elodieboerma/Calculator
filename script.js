@@ -62,13 +62,8 @@ function handleButton(btn) {
 };
 
 function handleDigit(value) {
-    clearCalculator();
-    display.textContent = value;
-    if (num1 == null) {
-        num1 = value;
-    }else if (currentInput == null) {
-        currentInput = value;
-    };
+    currentInput += value;
+    display.textContent = currentInput;
 };
 
 function handleOprtr(oprtr) {
@@ -79,28 +74,29 @@ function handleOprtr(oprtr) {
     //consecutive oprtr
     if (currentInput === "" && num1 !== null) {
         operator = oprtr;
+        return;
     };
-    //num1 exists and second number has been clicked
-    if (num1 !== null && operator !== null && currentInput !== "") {
-        num2 = Number(currentInput);
-        num1 = computeAndDisplay(num1,operator,num2);
+    if (num1 === null) {
+        num1 = Number(currentInput); // move first number into num1
         currentInput = "";
-    }else{
-        num1 = Number(currentInput);
+    } else if (operator !== null && currentInput !== "") {
+        // chain calculation
+        num2 = Number(currentInput);
+        num1 = computeAndDisplay(num1, operator, num2);
         currentInput = "";
     };
     operator = oprtr;
 }
 
 function handleEquals() {
-    if (num1 !== null || operator !== null || currentInput !== "") {
+    if (num1 !== null && operator !== null && currentInput !== "") {
         num2 = Number(currentInput);
 
         const result = computeAndDisplay(num1, operator, num2);
-
         num1 = result;
         operator = null;
         currentInput = "";
+        num2 = null;
     }else{
         alert("Not all components have been entered. Click \"clear\" to restart.");
     };
@@ -108,16 +104,19 @@ function handleEquals() {
 
 function computeAndDisplay(num1,operator,num2) {
     const display = document.getElementById("display");
-
     result = operate(num1,operator,num2);
     if (result.toString().length > 12) {
         result = Number(result).toPrecision(12);
-    }
-
+    };
     display.textContent = result;
-    return Number(result);
+    return result;
 }
 
 function clearCalculator() {
     display.textContent = "";
+    num1 = null;
+    operator = null;
+    num2 = null;
+    currentInput = "";
+    result = null;
 }
