@@ -58,6 +58,8 @@ function handleButton(btn) {
         handleEquals();
     }else if (btn.classList.contains("clear")) {
         clearCalculator();
+    }else if (btn.classList.contains("backspace")) {
+        undoLastButton();
     };
 };
 
@@ -119,4 +121,13 @@ function clearCalculator() {
     num2 = null;
     currentInput = "";
     result = null;
+}
+
+function undoLastButton() {
+    if (currentInput !== "") {
+        currentInput = currentInput.slice(0,-1);
+        display.textContent = display.textContent.slice(0,-1);
+    }else if (operator !== null) {
+        operator = null;
+    };
 }
