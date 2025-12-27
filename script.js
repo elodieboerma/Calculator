@@ -55,12 +55,21 @@ const times = document.getElementById("×");
 const dividedBy = document.getElementById("÷");*/
 
 const buttons = document.querySelectorAll("button");
-digit.addEventListener("click",() => {
+buttons.forEach(button => {
+    button.addEventListener("click",() => {
+        handleButton(button);
+    });
+});
+/*digit.addEventListener("click",() => {
     const value = clickButton(btn);
     //num1,num2,operator assignments
     let result;
     displayResult(num1,num2,operator);
-});
+});*/
+
+function handleButton(btn) {
+    
+}
 
 function clickButton(btn) {
     if (btn.class == "digitBtn") {
