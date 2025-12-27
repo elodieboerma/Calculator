@@ -107,8 +107,8 @@ function handleEquals() {
 function computeAndDisplay(num1,operator,num2) {
     const display = document.getElementById("display");
     result = operate(num1,operator,num2);
-    if (result.toString().length > 12) {
-        result = Number(result).toPrecision(12);
+    if (result.toString().length > 11) {
+        result = Number(result).toPrecision(11);
     };
     display.textContent = result;
     return result;
