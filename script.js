@@ -54,7 +54,7 @@ const minus = document.getElementById("-");
 const times = document.getElementById("×");
 const dividedBy = document.getElementById("÷");*/
 
-const digit = document.querySelectorAll(".digitBtn");
+const buttons = document.querySelectorAll("button");
 digit.addEventListener("click",() => {
     const value = clickButton(btn);
     //num1,num2,operator assignments
