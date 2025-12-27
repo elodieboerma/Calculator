@@ -34,6 +34,7 @@ function operate(operator,num1,num2) {
     };
 }
 
+const btn = document.querySelector("button");
 btn.addEventListener("click",() => {
     const value = clickButton();
     //num1,num2,operator assignments
@@ -41,7 +42,6 @@ btn.addEventListener("click",() => {
     displayResult(num1,num2,operator);
 });
 
-const btn = document.querySelector("button");
 function clickButton() {
     if (btn.class == "digit") {
         return displayDigit(btn);
