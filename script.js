@@ -64,7 +64,12 @@ function handleButton(btn) {
 };
 
 function handleDigit(value) {
-    currentInput += value;
+    if (currentInput.length == 11) {
+        alert("Maximum digit number reached. Please click an operator.");
+        return;
+    }else{
+        currentInput += value;
+    }
     display.textContent = currentInput;
 };
 
