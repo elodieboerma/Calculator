@@ -50,8 +50,17 @@ button {
     align-items: center;
 }
 
+#bttmBtns {
+    flex-direction: row;
+}
+
+.backspace {
+    font-size: 25px;
+}
+
+.backspace,
 .clear {
-    height: 50px;
-    width: 250px;
+    height: 25px;
+    width: 122px;
     margin: auto;
 }
