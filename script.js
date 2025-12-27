@@ -26,32 +26,49 @@ let num1;
 let operator;
 let num2;
 
-function operate(operator,num1,num2) {
-    if (operator === "+") {
+function operate(num1,operator,num2) {
+    //display.textContent = "";
+    if (operator == "+") {
         return add(num1,num2);
-    }else if (operator === "-") {
+    }else if (operator == "-") {
         return subtract(num1,num2);
-    }else if (operator === "×") {
+    }else if (operator == "×") {
         return multiply(num1,num2);
     }else{
         return divide(num1,num2);
     };
 }
 
-const btn = document.querySelector("button");
-btn.addEventListener("click",() => {
-    const value = clickButton();
+const zero = document.getElementById("0");
+const one = document.getElementById("1");
+const two = document.getElementById("2");
+const three = document.getElementById("3");
+const four = document.getElementById("4");
+const five = document.getElementById("5");
+const six = document.getElementById("6");
+const seven = document.getElementById("7");
+const eight = document.getElementById("8");
+const nine = document.getElementById("9");
+const plus = document.getElementById("+");
+const minus = document.getElementById("-");
+const times = document.getElementById("×");
+const dividedBy = document.getElementById("÷");
+
+const digit = document.querySelectorAll(".digitBtn");
+digit.addEventListener("click",() => {
+    const value = clickButton(btn);
     //num1,num2,operator assignments
     let result;
     displayResult(num1,num2,operator);
 });
 
-function clickButton() {
-    if (btn.class == "digit") {
+function clickButton(btn) {
+    if (btn.class == "digitBtn") {
         return displayDigit(btn);
     };
-    if (btn.class == "oprtr") {
-        return clickOperator(btn);
+    if (btn.class == "oprtrBtn") {
+        //return clickOperator(btn);
+        return btn.textContent;
     };
 };
 
@@ -63,11 +80,11 @@ function displayDigit(buttonClicked) {
     return number;
 }
 
-function clickOperator(buttonClicked) {
+/*function clickOperator(buttonClicked) {
     //const oprtrBtn = document.getElementsByClassName("oprtrBtn");
     const oprtr = buttonClicked.textContent;
     return oprtr;
-}
+}*/
 
 function displayResult(num1,num2,operator) {
     const display = document.getElementById("display");
