@@ -32,14 +32,14 @@ function operate(num1,operator,num2) {
         return add(num1,num2);
     }else if (operator == "-") {
         return subtract(num1,num2);
-    }else if (operator == "×") {
+    }else if (operator == "*") {
         return multiply(num1,num2);
     }else{
         return divide(num1,num2);
     };
 }
 
-const zero = document.getElementById("0");
+/*const zero = document.getElementById("0");
 const one = document.getElementById("1");
 const two = document.getElementById("2");
 const three = document.getElementById("3");
@@ -52,7 +52,7 @@ const nine = document.getElementById("9");
 const plus = document.getElementById("+");
 const minus = document.getElementById("-");
 const times = document.getElementById("×");
-const dividedBy = document.getElementById("÷");
+const dividedBy = document.getElementById("÷");*/
 
 const digit = document.querySelectorAll(".digitBtn");
 digit.addEventListener("click",() => {
