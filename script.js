@@ -68,8 +68,16 @@ buttons.forEach(button => {
 });*/
 
 function handleButton(btn) {
-
-}
+    if (btn.classList.contains("digit")) {
+        handleDigit(btn.dataset.value); //.dataset retrieves data-* property, .value its value
+    }else if (btn.classList.contains("oprtr")) {
+        handleOprtr(btn.dataset.value);
+    }else if (btn.classList.contains("equals")) {
+        handleEquals();
+    }else if (btn.classList.contains("clear")) {
+        clearCalculator();
+    };
+};
 
 function clickButton(btn) {
     if (btn.class == "digitBtn") {
