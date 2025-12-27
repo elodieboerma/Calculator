@@ -62,10 +62,13 @@ function handleButton(btn) {
 };
 
 function handleDigit(value) {
-    if (display.textContent == result) {
-        clearCalculator();
+    clearCalculator();
+    display.textContent = value;
+    if (num1 == null) {
+        num1 = value;
+    }else if (currentInput == null) {
+        currentInput = value;
     };
-    display.textContent += value;
 };
 
 function handleOprtr(oprtr) {
