@@ -22,12 +22,13 @@ function divide(a,b) {
     return a / b;
 }
 
-let num1;
-let operator;
-let num2;
+let num1 = null;
+let operator = null;
+let num2 = null;
+let currentInput = "";
+let result = null;
 
 function operate(num1,operator,num2) {
-    //display.textContent = "";
     if (operator == "+") {
         return add(num1,num2);
     }else if (operator == "-") {
@@ -46,12 +47,6 @@ buttons.forEach(button => {
         handleButton(button);
     });
 });
-/*digit.addEventListener("click",() => {
-    const value = clickButton(btn);
-    //num1,num2,operator assignments
-    let result;
-    displayResult(num1,num2,operator);
-});*/
 
 //says how to handle each button class
 function handleButton(btn) {
@@ -67,13 +62,15 @@ function handleButton(btn) {
 };
 
 function handleDigit(value) {
+    if (display.textContent == result) {
+        clearCalculator();
+    };
     display.textContent += value;
 };
 
 function handleOprtr(oprtr) {
     //oprtr first
     if (currentInput === "" && num1 === null) {
-        alert("Enter a number first. Click \"clear\" to restart.");
         return;
     };
     //consecutive oprtr
@@ -93,7 +90,7 @@ function handleOprtr(oprtr) {
 }
 
 function handleEquals() {
-    if (num1 == null || operator == null || currentInput == "") {
+    if (num1 !== null || operator !== null || currentInput !== "") {
         num2 = Number(currentInput);
 
         const result = computeAndDisplay(num1, operator, num2);
@@ -101,13 +98,15 @@ function handleEquals() {
         num1 = result;
         operator = null;
         currentInput = "";
+    }else{
+        alert("Not all components have been entered. Click \"clear\" to restart.");
     };
 }
 
 function computeAndDisplay(num1,operator,num2) {
     const display = document.getElementById("display");
 
-    let result = operate(operator,num1,num2);
+    result = operate(num1,operator,num2);
     if (result.toString().length > 12) {
         result = Number(result).toPrecision(12);
     }
@@ -119,13 +118,3 @@ function computeAndDisplay(num1,operator,num2) {
 function clearCalculator() {
     display.textContent = "";
 }
-
-function displayResult(num1,num2,operator) {
-        if (btn.getElementId() == "="
-            || btn.getElementId() == "+"
-            || btn.getElementId() == "-"
-            || btn.getElementId() == "×"
-            || btn.getElementId() == "÷") {
-                operator = btn.clickOperator();
-        };
-};
