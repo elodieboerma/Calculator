@@ -11,9 +11,13 @@ function multiply(a,b) {
 }
 
 function divide(a,b) {
-    while (b === 0) {
+    if (b === 0) {
         b = prompt(`You can't divide ${a} cookies by your zero friends. Enter a different 
             number.`);
+        if (b == 0) {
+            alert("Please clear the calculator and restart.");
+            return;
+        };
     };
     return a / b;
 }
