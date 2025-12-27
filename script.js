@@ -70,8 +70,26 @@ function handleDigit(value) {
     display.textContent += value;
 };
 
-function handleOprtr(value) {
-    return value;
+function handleOprtr(oprtr) {
+    //oprtr first
+    if (currentInput === "" && num1 === null) {
+        alert("Enter a number first. Click \"clear\" to restart.");
+        return;
+    };
+    //consecutive oprtr
+    if (currentInput === "" && num1 !== null) {
+        operator = oprtr;
+    };
+    //num1 exists and second number has been clicked
+    if (num1 !== null && operator !== null && currentInput !== "") {
+        num2 = Number(currentInput);
+        num1 = computeAndDisplay(num1,operator,num2);
+        currentInput = "";
+    }else{
+        num1 = Number(currentInput);
+        currentInput = "";
+    };
+    operator = oprtr;
 }
 
 function handleEquals() {
@@ -103,11 +121,6 @@ function clearCalculator() {
 }
 
 function displayResult(num1,num2,operator) {
-    //if operators are clicked consecutively
-        operator = clickOperator();
-    //if = bf enough operators
-        alert("Not all components have been entered. Click \"clear\" to restart.");
-            return;
         if (btn.getElementId() == "="
             || btn.getElementId() == "+"
             || btn.getElementId() == "-"
@@ -115,15 +128,4 @@ function displayResult(num1,num2,operator) {
             || btn.getElementId() == "÷") {
                 operator = btn.clickOperator();
         };
-        /*if (btn.getElementId() == "+"
-            || btn.getElementId() == "-"
-            || btn.getElementId() == "×"
-            || btn.getElementId() == "÷") {
-                operator = btn.clickOperator();
-                num1 = num2
-                num2 = displayDigit()
-                result = operate(operator,num1,num2)
-                display.textContent = result;
-        }else{*/
-        //};
 };
