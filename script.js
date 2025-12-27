@@ -75,11 +75,15 @@ function handleOprtr(value) {
 }
 
 function handleEquals() {
-    return; //
-}
+    if (num1 == null || operator == null || currentInput == "") {
+        num2 = Number(currentInput);
 
-function clearCalculator() {
-    display.textContent = "";
+        const result = computeAndDisplay(num1, operator, num2);
+
+        num1 = result;
+        operator = null;
+        currentInput = "";
+    };
 }
 
 function computeAndDisplay(num1,operator,num2) {
@@ -94,15 +98,16 @@ function computeAndDisplay(num1,operator,num2) {
     return Number(result);
 }
 
+function clearCalculator() {
+    display.textContent = "";
+}
+
 function displayResult(num1,num2,operator) {
     //if operators are clicked consecutively
         operator = clickOperator();
-    //const equal = document.getElementById("=")
-    btn.addEventListener("click",(num1,num2,operator) => {
-        if (num1 == 0 || operator == 0 || num2 == 0) {
-            alert("Not all components have been entered. Click \"clear\" to restart.");
+    //if = bf enough operators
+        alert("Not all components have been entered. Click \"clear\" to restart.");
             return;
-        };
         if (btn.getElementId() == "="
             || btn.getElementId() == "+"
             || btn.getElementId() == "-"
@@ -121,5 +126,4 @@ function displayResult(num1,num2,operator) {
                 display.textContent = result;
         }else{*/
         //};
-    });
-}
+};
